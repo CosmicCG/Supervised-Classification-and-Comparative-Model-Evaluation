@@ -7,7 +7,7 @@ Team: Mamoudou Balde, Donovan Okwonna
 ## Repository layout
 
 ```
-src/        download, cleaning, models, evaluation, experiment runner
+src/        data download + cleaning scripts
 tests/      synthetic-data checks for the cleaning logic
 results/    metric tables (CSV)
 figures/    PR curves, bias-variance curves, feature importance
@@ -25,11 +25,7 @@ python src/prep_nhanes.py            # -> data/processed/nhanes_young.csv
 python src/prep_vertebral.py         # -> data/processed/vertebral.csv
 python src/prep_brfss.py             # -> data/processed/brfss2024_young.csv (takes a few minutes)
 python tests/test_prep_synthetic.py  # optional: checks the cleaning logic on fake data
-python src/run_experiments.py        # all models x all tasks -> results/ + figures/ (~5-10 min)
 ```
-
-While developing, `python src/run_experiments.py --task nhanes_ibp` runs one task, and
-`--brfss-sample 40000` makes BRFSS runs faster.
 
 Each prep script prints row counts and class balance. Save that output, because it is the first table in your report.
 If a script prints `warning: column X not found`, CDC named that variable differently. Check the codebook link below and fix the name in the script.
@@ -69,13 +65,9 @@ BRFSS 2025 also uses `HAVARTH4`. To use it, run `--brfss-year 2025` / `--year 20
 4. **The vertebral dataset is not an arthritis dataset.** It has no age and the labels are hernia/spondylolisthesis. Frame it as "how do the models behave with n=310?"
 5. **Arthritis in BRFSS is self-reported** and includes gout, lupus, and fibromyalgia, not just inflammatory arthritis.
 
-## Modelling (src/models.py, src/evaluate.py, src/run_experiments.py)
+## Next steps
 
-- The same preprocessing for every model: median impute + scale for numeric features, mode impute + one-hot for categorical ones.
-- Models: LogReg, DecisionTree (max_depth 6), KNN (k=25), GaussianNB, RandomForest (300 trees).
-- Imbalance strategies: `none`, `class_weight="balanced"` (LogReg/Tree/RF only), and `smote` (needs imbalanced-learn; applied to training data only).
-- Outputs per task:
-  - `results/metrics_<task>.csv`: test precision/recall/F1 at a 0.5 threshold, PR-AUC, ROC-AUC, train PR-AUC, the train-test gap, and 5-fold CV for the small tasks
-  - `figures/pr_<task>.png`: precision-recall curves
-  - `figures/vc_tree_depth_<task>.png`, `figures/vc_knn_k_<task>.png`: bias-variance curves
-  - `results/importance_<task>.csv`, `figures/importance_<task>.png`: RF permutation importance plus LogReg coefficients
+- Shared model pipeline for LogReg, Decision Tree, KNN, Naive Bayes and Random Forest
+- Class imbalance: class weights vs. SMOTE
+- Metrics: precision, recall, F1, PR curves; train-vs-test scores and validation curves for bias-variance
+- Feature importance
