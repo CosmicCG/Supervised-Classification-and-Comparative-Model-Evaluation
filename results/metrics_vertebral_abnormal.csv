@@ -1,0 +1,9 @@
+task,model,strategy,prevalence_test,test_precision,test_recall,test_f1,test_pr_auc,test_roc_auc,train_f1,train_pr_auc,pr_auc_gap,cv_pr_auc_mean,cv_pr_auc_sd
+vertebral_abnormal,LogReg,none,0.6795,0.9057,0.9057,0.9057,0.9737,0.9351,0.8917,0.9694,-0.0043,0.9677,0.0133
+vertebral_abnormal,DecisionTree,none,0.6795,0.7895,0.8491,0.8182,0.9361,0.8657,0.9036,0.9624,0.0263,0.9212,0.0246
+vertebral_abnormal,KNN,none,0.6795,0.8571,0.9057,0.8807,0.935,0.8713,0.8742,0.9525,0.0175,0.9487,0.0139
+vertebral_abnormal,NaiveBayes,none,0.6795,0.9268,0.717,0.8085,0.9417,0.8845,0.8227,0.9491,0.0075,0.9487,0.0167
+vertebral_abnormal,RandomForest,none,0.6795,0.875,0.9245,0.8991,0.9704,0.9374,0.9562,0.994,0.0236,0.9635,0.0089
+vertebral_abnormal,LogReg,class_weight,0.6795,0.9574,0.8491,0.9,0.9761,0.9396,0.8591,0.97,-0.0061,0.9673,0.0127
+vertebral_abnormal,DecisionTree,class_weight,0.6795,0.9286,0.7358,0.8211,0.9504,0.9087,0.8651,0.9614,0.011,0.9285,0.0193
+vertebral_abnormal,RandomForest,class_weight,0.6795,0.9388,0.8679,0.902,0.9698,0.9366,0.9298,0.9932,0.0234,0.9621,0.0083

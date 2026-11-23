@@ -1,0 +1,9 @@
+task,model,strategy,prevalence_test,test_precision,test_recall,test_f1,test_pr_auc,test_roc_auc,train_f1,train_pr_auc,pr_auc_gap,cv_pr_auc_mean,cv_pr_auc_sd
+nhanes_arthritis,LogReg,none,0.0773,0.7143,0.098,0.1724,0.3236,0.7553,0.266,0.3963,0.0727,0.3489,0.0663
+nhanes_arthritis,DecisionTree,none,0.0773,0.25,0.098,0.1408,0.1648,0.6985,0.3285,0.4046,0.2398,0.2143,0.0466
+nhanes_arthritis,KNN,none,0.0773,0.0,0.0,0.0,0.1764,0.7356,0.0256,0.2991,0.1228,0.2459,0.0389
+nhanes_arthritis,NaiveBayes,none,0.0773,0.0769,0.9412,0.1422,0.197,0.7412,0.1506,0.2189,0.0219,0.1969,0.0329
+nhanes_arthritis,RandomForest,none,0.0773,1.0,0.0588,0.1111,0.2554,0.7198,0.2921,0.7736,0.5182,0.3485,0.0581
+nhanes_arthritis,LogReg,class_weight,0.0773,0.1751,0.6078,0.2719,0.3254,0.7628,0.3152,0.3607,0.0353,0.3273,0.0633
+nhanes_arthritis,DecisionTree,class_weight,0.0773,0.1935,0.5882,0.2913,0.1769,0.7139,0.3786,0.3771,0.2002,0.2175,0.0478
+nhanes_arthritis,RandomForest,class_weight,0.0773,0.2255,0.451,0.3007,0.2621,0.735,0.6538,0.8761,0.614,0.3422,0.0607
